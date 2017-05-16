@@ -128,7 +128,7 @@ app.get('/advancesearch', function(req, res){
     func_qryObj = []
     if(fun_name!=""){
         tmpjson = {
-            "match":{
+            "fuzzy":{
                 "defined_fun.fun_name":fun_name
             }
         }
@@ -198,16 +198,20 @@ app.get('/advancesearch', function(req, res){
         class_qryObj.push(tmpjson)
     }
     var body;
+    var path="";
     if (option==0) {
         body = class_qryObj;
+        path="defined_class"
     }else{
         body = func_qryObj;
+        path="defined_fun"
     }
+    console.log(body)
     var qryObj2 = {
                     "query":{
                                 "nested":
                                 {
-                                    "path":"defined_fun",
+                                    "path":path,
                                     "query":{
                                         "bool":{
                                             "must":body
@@ -250,7 +254,6 @@ app.get('/advancesearch', function(req, res){
                 }
                 }   
         };
-    console.log(qryObj);
 
     elasticSearchClient.search({
         "index":_index, 
