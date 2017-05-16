@@ -116,7 +116,7 @@ app.get('/advancesearch', function(req, res){
     func_qryObj = []
     if(fun_name!=""){
         tmpjson = {
-            "fuzzy":{
+            "match":{
                 "defined_fun.fun_name":fun_name
             }
         }
@@ -155,7 +155,7 @@ app.get('/advancesearch', function(req, res){
     class_qryObj = []
     if(class_name!=""){
         tmpjson = {
-            "fuzzy":{
+            "match":{
                 "defined_class.class_name":class_name
             }
         }
