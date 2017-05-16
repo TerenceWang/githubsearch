@@ -70,8 +70,9 @@ mixin broken
           +FunctionSearch
 
 mixin FullSearch
-  form.form-horizontal(method="get" action="/advancesearch")
+  form.form-horizontal(method="get" action="/search")
     +SearchBox("q", "Full Search")
+    input(type="hidden" name="s" value="0")
     +search_button("/search")
 
 mixin adv
