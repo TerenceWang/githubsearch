@@ -1,0 +1,27 @@
+include util
+
+.page-header
+    h3 Search Results
+
++adv
+
+br
+
+.col-md-9
+    .span12
+        if (result.hits.total!=0)
+            each document, i in result.hits.hits
+                br
+                div: h4= "("+ (i + 1) + ")"
+                  a(href=document._source.showurl)= " class " + document._source.defined_class[0].class_name
+                            // document._source.PATH
+                pre.pre-scrollable
+                    code.language-java= document._source.contents
+        else
+            h3 No Result
+
+    nav.text-center
+        ul.pagination.pagination-lg
+            each document in result.urls
+                li
+                    a(href=document.url)=document.index

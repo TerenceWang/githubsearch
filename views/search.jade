@@ -1,0 +1,35 @@
+.page-header
+    h3 Search Results
+
+.col-md-9
+    .span12
+        if (result.hits.total!=0)
+            each document in result.hits.hits
+                div
+                    a(href=document._source.showurl)
+                            h5= document._source.PATH
+                pre.pre-scrollable
+                    code.language-java= document._source.contents
+        else
+            h3 No Result
+    nav.text-center
+        ul.pagination.pagination-lg
+            each document in result.urls
+                li
+                    a(href=document.url)=document.index
+            //- li
+            //-     a(href="#")=2
+            //- li
+            //-     a(href="#")=3
+            //- li
+            //-     a(href="#")=4
+        //- table.table.table
+        //-     thead
+        //-         tr
+        //-             th Name
+        //-             th Text
+        //-     tbody
+        //-         each document in result.hits.hits
+        //-             tr
+        //-             td= document._source.name
+        //-             td= document._source.text

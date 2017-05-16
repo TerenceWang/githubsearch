@@ -1,0 +1,92 @@
+mixin search_button(task)
+  .form-group
+    label.col-sm-6.control-label(for='firstname')
+      .col-sm-6
+      button.btn.btn-secondary(type="submit" action= task) Search &nbsp;
+        i.glyphicon.glyphicon-search
+
+
+
+mixin searchRow
+  form.form-horizontal.input-group(method="get" action="/search")
+    .row
+      .col-2
+        select.form-control(name="q_type")
+          option Function
+          option Class
+      .col-6
+        .input-group
+          input(type="hidden" name="s" value="0")
+          .input-group-btnb
+            input.form-control(type="text" name="func" placeholder="Type here function name")
+            +search_button
+ //- form.form-horizontal(role='form')
+ //-      .form-group
+ //-        label.col-sm-2.control-label(for='firstname') label1
+ //-        .col-sm-10
+ //-          input#firstname.form-control(type='text', placeholder='')
+ //-      .form-group
+ //-        label.col-sm-2.control-label(for='lastname') label2
+ //-        .col-sm-10
+ //-          input#lastname.form-control(type='text', placeholder='')
+mixin SearchBox(name, text)
+   .form-group
+        label.col-sm-2.control-label(for='firstname')= text
+        .col-sm-6
+          input.form-control(type='text',name= name, placeholder='')
+mixin ClassSearch
+  form.form-horizontal(method="get" action="/advancesearch" display="table")
+    +SearchBox("class_name", "class name")
+    +SearchBox("class_modifier", "class modifier")
+    +SearchBox("class_implement", "class implements")
+    +SearchBox("class_extend", "class extend")
+    input(type="hidden" name="optionsRadiosinline" value="0")
+    +search_button("/advancesearch")
+
+mixin FunctionSearch
+    form.form-horizontal(method="get" action="/advancesearch")
+      +SearchBox("fun_name", "fun name")
+      +SearchBox("fun_modifier", "fun modifier")
+      +SearchBox("fun_output", "fun return")
+      +SearchBox("fun_input", "fun input type")
+      input(type="hidden" name="optionsRadiosinline" value="1")
+      +search_button("/advancesearch")
+
+mixin broken
+  #accordion(role='tablist', aria-multiselectable='false')
+    .card
+      #headingOne.card-header(role='tab')
+        h5.mb-0
+          a.card-link(data-toggle='collapse', data-parent='#accordion', href='#collapseOne') Class
+      #collapseOne.collapse.show(role='tabpanel', aria-labelledby='headingOne')
+        .card-block
+          +ClassSearch
+    .card
+      #headingTwo.card-header(role='tab')
+        h5.mb-0
+          a.collapsed.card-link(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo') Function
+      #collapseTwo.collapse(role='tabpanel')
+        .card-block
+          +FunctionSearch
+
+mixin FullSearch
+  form.form-horizontal(method="get" action="/advancesearch")
+    +SearchBox("q", "Full Search")
+    +search_button("/search")
+
+mixin adv
+  ul.nav.nav-tabs(role="tablist")
+    li.active(role="presentation" data-toggle="tab"): a(href="#funp" role="tab" data-toggle="tab") Function
+    li(role="presentation" data-toggle="tab"): a(href="#classp" role="tab" data-toggle="tab") Class
+    li(role="presentation" data-toggle="tab"): a(href="#fullp" role="tab" data-toggle="tab") Full
+  .tab-content
+    .tab-pane.active#funp(role="tabpanel")
+      br
+      +FunctionSearch
+    .tab-pane#classp(role="tabpanel")
+      br
+      +ClassSearch
+    .tab-pane#fullp(role="tabpanel")
+      br
+      +FullSearch
+      br

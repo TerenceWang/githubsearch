@@ -1,0 +1,18 @@
+include util
+.col-md-12
+        .jumbotron
+          h1 Git + Search
+          br
+          p This example illustrates basic search features ElasticSearch as service.
+
+          p Type something to search box and hit enter for sample search results.
+
+          br 
+          +adv
+        if result
+          if (result == "Error: connect ECONNREFUSED")
+            h5.alert Elasticsearch server is either not running or not configured
+          else
+            h5 result
+        else
+          h5 Elasticsearch server is running now

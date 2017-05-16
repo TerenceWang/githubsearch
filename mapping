@@ -1,0 +1,81 @@
+PUT codecollection
+{
+  "analysis": {
+    "analyzer": {
+      "camel_analyzer": {
+        "tokenizer": "whitespace",
+        "filter": [
+          "camel_filter",
+          "lowercase",
+          "asciifolding"
+        ]
+      }
+    },
+    "filter": {
+      "camel_filter": {
+        "type": "word_delimiter",
+        "generate_number_parts": false,
+        "stem_english_possessive": false,
+        "split_on_numerics": false
+      }
+    }
+  },
+  "mappings": {
+    "javaFiles":{
+      "properties": {
+        "contents":{
+          "type":"text",
+          "analyzer": "standard"
+        },
+        "PATH":{
+          "type":"keyword"
+        },
+        "defined_class":{
+          "type": "nested",
+          "properties": {
+            "class_extend":{
+              "type":"text"
+            },
+            "class_implement":{
+              "type":"text"
+            },
+            "class_modifier":{
+              "type":"text"
+            },
+            "class_name":{
+              "type":"text"
+            }
+          }
+        },
+        "defined_fun":{
+          "type": "nested",
+          "properties": {
+            "fun_input":{
+              "type":"nested",
+              "properties":{
+                "input_name":{
+                  "type":"text"
+                  
+                },
+                "input_type":{
+                  "type":"text"
+                  
+                }
+              }
+            },
+            "fun_modifier":{
+              "type":"text"
+            },
+            "fun_return":{
+              "type":"text"
+            },
+            "fun_name":{
+              "type":"text"
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}

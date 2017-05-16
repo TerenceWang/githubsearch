@@ -1,0 +1,22 @@
+.row
+    .col-md-12
+        .jumbotron
+          h1 Git + Search
+          br
+          p This example illustrates basic search features ElasticSearch as service.
+
+          p Type something to search box and hit enter for sample search results.
+
+          br 
+          .input-group.col-md-9
+            form(method="get", class="form-horizontal", action="/search")
+              input(type="text", name="q", placeholder="search",value="", class="form-control")
+              input(type="hidden", name="s", value="0")
+        if result
+          if (result == "Error: connect ECONNREFUSED")
+            h5.alert Elasticsearch server is either not running or not configured
+          else
+            h5 result
+        else
+          h5 Elasticsearch server is running now
+        

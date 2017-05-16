@@ -1,0 +1,40 @@
+.row
+    .col-md-12
+        .jumbotron
+          h1 Git + Search
+          br
+          p This example illustrates basic search features ElasticSearch as service.
+
+          p Type something to search box and hit enter for sample search results.
+
+          br 
+          .input-group.col-md-9
+            form(method="get", class="form-horizontal", action="/advancesearch")
+              .form-group.col-sm-10
+                input(type="text", name="class_name", placeholder="Class_Name",value="", class="form-control")
+                input(type="text", name="class_modifier", placeholder="Class_Modifier",value="", class="form-control")
+                input(type="text", name="class_extend", placeholder="Class_Extend",value="", class="form-control")
+                input(type="text", name="class_implement", placeholder="Class_Implement",value="", class="form-control")
+
+                label(class="checkbox-inline")
+                  input(type="radio", name="optionsRadiosinline", value="0", checked)
+                  |   AND
+                label(class="checkbox-inline")
+                  input(type="radio", name="optionsRadiosinline", value="1")
+                  |   OR
+
+                input(type="text", name="fun_name", placeholder="Function_Name",value="", class="form-control")
+                input(type="text", name="fun_modifier", placeholder="Function_Modifier",value="", class="form-control")
+                input(type="text", name="fun_input", placeholder="Function_Input",value="", class="form-control")
+                input(type="text", name="fun_output", placeholder="Function_Output",value="", class="form-control")
+                input(type="hidden", name="s", value="0")
+                .form-group.col-sm-3
+                  input(type="submit",class="btn btn-default", value="Search", class="form-control")
+        if result
+          if (result == "Error: connect ECONNREFUSED")
+            h5.alert Elasticsearch server is either not running or not configured
+          else
+            h5 result
+        else
+          h5 Elasticsearch server is running now
+        

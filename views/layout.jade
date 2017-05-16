@@ -1,0 +1,30 @@
+doctype
+html
+  head
+    link(rel='stylesheet', href='/libs/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/libs/bootstrap/css/bootstrap-theme.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/libs/prism/css/prism.css')
+  body
+    nav.navbar.navbar-default.navbar-fixed-top
+        .navbar-inner
+            .container
+                .navbar-header
+                    a.navbar-brand(href='/')= 'Git Search'
+    //- .navbar-nav-fixed-top
+    //-     .container
+    //-       a.brand(href='/')= 'Git Search'
+    //-         .navbar-collapse
+    //-             ul.nav
+    //-                 li
+    //-                     a(href='/')= 'Home'
+
+
+
+    .container
+        != body
+
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+    script(src="/libs/bootstrap/js/bootstrap.min.js")
+    script(src="/libs/prism/js/prism.js")
