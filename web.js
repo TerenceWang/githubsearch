@@ -6,18 +6,6 @@ var app = module.exports = express.createServer();
 
 var elasticsearch = require('elasticsearch');
 
-var connectionString = url.parse(process.env.BONSAI_URL);
-
-var serverOptions = {
-    host: connectionString.hostname,
-    port: connectionString.port,
-    secure: false,
-    auth: {
-        username: connectionString.auth ? connectionString.auth.split(":")[0] : null,
-        password: connectionString.auth ? connectionString.auth.split(":")[1] : null
-    }
-};
-
 var elasticSearchClient = new elasticsearch.Client()
 // var elasticSearchClient = new ElasticSearchClient(serverOptions);
 
