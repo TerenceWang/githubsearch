@@ -25,7 +25,7 @@ PUT codecollection
       "properties": {
         "contents":{
           "type":"text",
-          "analyzer": "standard"
+          "analyzer": "camel_analyzer"
         },
         "PATH":{
           "type":"keyword"
@@ -43,7 +43,8 @@ PUT codecollection
               "type":"text"
             },
             "class_name":{
-              "type":"text"
+              "type":"text",
+              "analyzer": "camel_analyzer"
             }
           }
         },
@@ -55,7 +56,6 @@ PUT codecollection
               "properties":{
                 "input_name":{
                   "type":"text"
-                  
                 },
                 "input_type":{
                   "type":"text"
@@ -70,7 +70,8 @@ PUT codecollection
               "type":"text"
             },
             "fun_name":{
-              "type":"text"
+              "type":"text",
+              "analyzer": "camel_analyzer"
             }
           }
         }
