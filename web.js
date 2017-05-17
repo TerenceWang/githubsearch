@@ -242,6 +242,7 @@ app.get('/advancesearch', function(req, res){
                 }
                 }   
         };
+    console.log(qryObj2);
 
     elasticSearchClient.search({
         "index":_index, 
@@ -285,7 +286,7 @@ app.get('/search', function (req, res) {
             // "nested":{
                 // "path":"defined_fun",
                 "query":{
-                    "fuzzy":{
+                    "match":{
                         "_all":req.query.q
                     }
                 // }

@@ -1,0 +1,41 @@
+class Exception
+class NoUsernameException
+function search
+function public static void search
+function search(Comparable[] )
+function query
+usage "throws IOException"
+function push
+function public boolean isEmpty()
+function public static void main(String[] args)
+usage "import java.io.IOException;"
+usage "private final class" (also try class)
+usage "Button" (also try class)
+usage "android"
+usage "HashSet" (also try class)
+class "Gradient"
+class "Classifier"
+class "Adapter"
+usage "ArrayList" (also try class)
+usage "InputStream" (also try class)
+usage "Iterator" (also try class)
+class Vector
+class HashMap
+class Queue
+class Heap
+comment "priority queue implementation" (also try class with "priority queue" etc.)
+usage "average" (also try class and function)
+usage "Training" (also try class and function)
+usage "FileSystem" (also try class and function)
+usage "Interface" (also try class)
+class Problem
+class implements Comparable
+class Comparator
+function mergesort
+function quicksort
+usage "Factory"
+class modifier: abstract
+usage default (also try class and function)
+usage buffer (also try class and function)
+usage HTML
+usage JSON (also try class and function)

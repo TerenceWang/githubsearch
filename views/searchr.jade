@@ -6,13 +6,18 @@ include util
 +adv
 
 br
+h3 Found #{result.hits.total}
+br
 
 .col-md-9
     .span12
         if (result.hits.total!=0)
             each document, i in result.hits.hits
                 br
-                div: h4= "("+ (i + 1) + ")"
+                div
+                  h4= "("+ (i + 1) + ")"
+                    h6= "Score: " + document._score
+                  br
                   a(href=document._source.showurl)= " class " + document._source.defined_class[0].class_name
                             // document._source.PATH
                 pre.pre-scrollable
