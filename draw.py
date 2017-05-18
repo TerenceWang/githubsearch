@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
- 
+from matplotlib.backends.backend_pdf import PdfPages
+
 def recall(nums, target):
 	res = []
 	count = 0
@@ -202,7 +203,7 @@ frecall = frecall/(totalcount*len(f))
 togetherrecall = togetherrecall/(totalcount*(len(c)+len(f)))
 
 def drawplot(number,A1,B1,A2,B2,str1, str2):
-	plt.figure(number)
+	ff = plt.figure(number)
 	ax1 = plt.subplot(211)
 	ax2 = plt.subplot(212)
 
@@ -218,10 +219,17 @@ def drawplot(number,A1,B1,A2,B2,str1, str2):
 	plt.legend(loc='best')
 	plt.xlabel('Items')
 	plt.ylabel('Recall')
+	return ff
 
-drawplot(1,tpre,togetherpre,trecall,togetherrecall,"full","class+function")
-drawplot(2,cpre,fpre,crecall,frecall,"class","function")
+ff = drawplot(1,tpre,togetherpre,trecall,togetherrecall,"full","class+function")
+ff.savefig("full_together.pdf", bbox_inches='tight')
 
+
+ff = drawplot(2,cpre,fpre,crecall,frecall,"class","function")
+ff.savefig("class_function.pdf", bbox_inches='tight')
+
+# pp = PdfPages('class_function.pdf')
+# plt.savefig(pp, format='pdf')
 
 # plt.figure(1)
 # ax1 = plt.subplot(211)
@@ -267,5 +275,3 @@ drawplot(2,cpre,fpre,crecall,frecall,"class","function")
 # plt.plot(x,trecall,label="full")
 # plt.plot(x,frecall,label="function")
 # plt.legend(loc='best')
-
-plt.show()
